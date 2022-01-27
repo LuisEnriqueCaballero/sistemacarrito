@@ -8,7 +8,7 @@
     <script src="Libreria/jquery/jquery-3.6.0.min.js"></script>
     <title>Login de usuario</title>
 </head>
-<body>
+<body style="background:gray">
     <br><br><br><br>
     <div class="container">
         <div class="row">
