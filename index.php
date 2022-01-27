@@ -10,7 +10,7 @@
 </head>
 <body>
     <br><br><br><br>
-    <div class="conteiner">
+    <div class="container">
         <div class="row">
             <div class="col-sm-4"></div>
             <div class="col-sm-4">
@@ -20,8 +20,17 @@
                     </div>
                     <div class="panel panel-body">
                         <p>
-                            <img src="img/logo.png" width="200px" height="200px">
+                            <img src="img/logo.png"  height="190px">
                         </p>
+                        <form action="" class="frmlogin">
+                            <label for="">USUARIO</label>
+                            <input type="text" name="usuario" id="usuario" class="form-control input-sm" placeholder="INGRESE EL USUARIO">
+                            <label for="">PASSWORD</label>
+                            <input type="password" name="password" id="password" class="form-control input-sm" placeholder="INGRESE SU CONTRASEÑA">
+                            <p></p>
+                            <span class="btn btn-primary btn-sm">ENTRAR</span>
+                            <a href="registro.php" class="btn btn-danger btn-sm">REGISTRAR</a>
+                        </form>
                     </div>
                 </div>
             </div>
