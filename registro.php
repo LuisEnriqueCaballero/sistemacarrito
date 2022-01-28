@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Libreria/bootstrap/css/bootstrap.css">
     <script src="Libreria/jquery/jquery-3.6.0.min.js"></script>
+    <script src="Js/function.js"></script>
     <title>REGISTRARSE</title>
 </head>
 <body style="background:gainsboro">
@@ -19,7 +20,7 @@
                         REGISTRO DE USUARIO
                     </div>
                     <div class="panel panel-body">
-                        <form action="" class="frmlogin">
+                        <form action="" id="frmRegistro">
                             <label for="">NOMBRE</label>
                             <input type="text" name="nombre" id="nombre" class="form-control input-sm" placeholder="INGRESAR NOMBRE">
                             <label for="">APELLIDO</label>
@@ -29,7 +30,7 @@
                             <label for="">CONTRASEÑA</label>
                             <input type="password" name="contraseña" id="contraseña" class="form-control input-sm" placeholder="INGRESAR SU CONTRASEÑA">
                             <p></p>
-                            <span class="btn btn-success ">REGISTRARSE</span>
+                            <span class="btn btn-success" id="registro">REGISTRARSE</span>
                             <br>
                             <a href="index.php" class="btn btn-danger float-end">LOGIN</a>
                         </form>
@@ -41,3 +42,24 @@
     </div>
 </body>
 </html>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#registro').click(function(){
+            $vacio=validarFormvacio('#frmRegistro');
+
+            if($vacio > 0){
+                alert("DEBES RELLENAR EL FORMULARIO");
+                return false;
+            }
+            datos=$('#frmRegistro').serialize();
+            $.ajax({
+                type:'POST',
+                data:datos,
+                url:"procesos/",
+                success:function(r){
+
+                }
+            })
+        })
+    })
+</script>
