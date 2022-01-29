@@ -42,20 +42,20 @@
     </div>
 </body>
 </html>
-<script type="text/javascript">
+<script>
     $(document).ready(function(){
         $('#registro').click(function(){
-            $vacio=validarFormvacio('#frmRegistro');
+            vacio=validarFormularioVacio('frmRegistro');
 
-            if($vacio > 0){
-                alert("DEBES RELLENAR EL FORMULARIO");
+            if(vacio > 0){
+                alert("DEBES RELLENAR EL FORMULARIO!!");
                 return false;
             }
             datos=$('#frmRegistro').serialize();
             $.ajax({
                 type:'POST',
                 data:datos,
-                url:"procesos/",
+                url:"Procesos/regLoguin/registrarUsuario.php",
                 success:function(r){
 
                 }
