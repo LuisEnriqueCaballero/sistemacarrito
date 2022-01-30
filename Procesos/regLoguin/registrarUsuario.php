@@ -4,9 +4,14 @@ require_once "../../Clases/Usuarios.php";
 
 $Usuarios =new Usuarios();
 
+   $pass =sha1($_POST['password']);
+   $datos=array(
+       $_POST['nombre'],
+       $_POST['apellido'],
+       $_POST['correo'],
+       $pass
+   );
 
-   $nombre=$_POST['nombre'];
-   $apellido=$_POST['apellido'];
-   $correo=$_POST['correo'];
-   $password=$_POST['password'];
+  echo $Usuarios->registroUsuario($datos);
+
 ?>

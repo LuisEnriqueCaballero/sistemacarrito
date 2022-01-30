@@ -28,7 +28,7 @@
                             <label for="">EMAIL</label>
                             <input type="email" name="correo" id="correo" class="form-control input-sm" placeholder="INGRESAR SU CORREO">
                             <label for="">CONTRASEÑA</label>
-                            <input type="password" name="contraseña" id="contraseña" class="form-control input-sm" placeholder="INGRESAR SU CONTRASEÑA">
+                            <input type="password" name="password" id="password" class="form-control input-sm" placeholder="INGRESAR SU CONTRASEÑA">
                             <p></p>
                             <span class="btn btn-success" id="registro">REGISTRARSE</span>
                             <br>
@@ -42,24 +42,27 @@
     </div>
 </body>
 </html>
-<script>
+<script type="text/javascript">
     $(document).ready(function(){
         $('#registro').click(function(){
-            vacio=validarFormularioVacio('frmRegistro');
-
-            if(vacio > 0){
+            vacios=validarFormularioVacio("frmRegistro");
+            if(vacios > 0){
                 alert("DEBES RELLENAR EL FORMULARIO!!");
                 return false;
             }
             datos=$('#frmRegistro').serialize();
             $.ajax({
-                type:'POST',
+                type:"POST",
                 data:datos,
-                url:"Procesos/regLoguin/registrarUsuario.php",
+                url:'Procesos/regLoguin/registrarUsuario.php',
                 success:function(r){
-
+                    if(r==1){
+                        alert("AGREGADO CON EXITOS !!")
+                    }else{
+                        alert("fallo al agregar xb")
+                    }
                 }
-            })
-        })
-    })
+            });
+        });
+    });
 </script>
