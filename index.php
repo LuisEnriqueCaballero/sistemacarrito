@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Libreria/bootstrap/css/bootstrap.css">
     <script src="Libreria/jquery/jquery-3.6.0.min.js"></script>
+    <script src="Js/function.js"></script>
+    <!-- esta funcion nos sirve para valida datos -->
     <title>Login de usuario</title>
 </head>
 <body style="background:gray">
@@ -22,13 +24,13 @@
                         <p>
                             <img src="img/logo.png"  height="190px">
                         </p>
-                        <form action="" class="frmlogin">
+                        <form id="frmlogin">
                             <label for="">USUARIO</label>
                             <input type="text" name="usuario" id="usuario" class="form-control input-sm" placeholder="INGRESE EL USUARIO">
                             <label for="">PASSWORD</label>
                             <input type="password" name="password" id="password" class="form-control input-sm" placeholder="INGRESE SU CONTRASEÑA">
                             <p></p>
-                            <span class="btn btn-primary btn-sm">ENTRAR</span>
+                            <span class="btn btn-primary btn-sm" id="Ingresar">ENTRAR</span>
                             <a href="registro.php" class="btn btn-danger btn-sm">REGISTRAR</a>
                         </form>
                     </div>
@@ -39,3 +41,25 @@
     </div>
 </body>
 </html>
+<script type="text/javascript">
+    $("#Ingresar").click(function(){
+        vacio=validarFormularioVacio('frmlogin')
+        if(vacio >0){
+            alert("Debes llenar todos los datos ;)");
+            return false;
+        }
+        datos=$("#frmlogin").serialize();
+        $.ajax({
+            type:"POST",
+            data:datos,
+            url:"Procesos/regLoguin/login.php",
+            success:function(r){
+                if(r==1){
+                    window.location="views/inicio.php";
+                }else{
+                    alert("no se puedo acceder :'(");
+                }
+            }
+        });
+    });   
+</script>

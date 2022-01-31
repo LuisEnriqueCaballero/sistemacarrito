@@ -2,7 +2,7 @@
     // script para evento click y ajax
     $('#').click(function(){
         datos=$('#').serialize();
-        $ajax({
+        $.ajax({
             type:"POST",
             data:datos,
             url:"../Procesos",
