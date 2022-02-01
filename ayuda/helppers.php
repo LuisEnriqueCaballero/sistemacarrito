@@ -1,6 +1,7 @@
 
 <!-- MENU -->
 <!-- https://bootsnipp.com/snippets/Kr5yV -->
+<!-- https://getbootstrap.com/docs/3.3/components/ iconos componentes--> 
 <script type="text/javascript">
     // script para evento click y ajax
     $('#').click(function(){
@@ -62,14 +63,4 @@
     
     <!-- /container -->        
 
-    <script type="text/javascript">
-    $(window).scroll(function() {
-    if ($(document).scrollTop() > 150) {
-        alert('hi');
-    $('.logo').height(200);
-
-    }
-    else {
-    $('.logo').height(100);}
-    });
-</script>
+    
