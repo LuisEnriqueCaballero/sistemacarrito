@@ -46,7 +46,7 @@
               <a href="cliente.php"><span class="glyphicon glyphicon-user"></span>Clientes</a>
             </li>
             <li>
-              <a href="ventas.php"><span class="glyphicon glyphicon-user"></span>Vender Articulos</a>
+              <a href="venta.php"><span class="glyphicon glyphicon-user"></span>Vender Articulos</a>
             </li>
             <li class="dropdown">
               <a href="#" style="color:red" class="dropdown-toggle" data-toggle="dropdown" role="button"
