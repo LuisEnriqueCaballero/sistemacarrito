@@ -1,3 +1,15 @@
+<?php
+require_once "Clases/Conexion.php";
+$con = new Conectar();
+$conexion = $con->conexion();
+
+$sql ="SELECT * FROM usuario WHERE email='admin@gmail.com'";
+$resultado = mysqli_query($conexion, $sql);
+$validar = 0;
+if(mysqli_num_rows($resultado)){
+    header("location:index.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -1,3 +1,17 @@
+<?php
+   require_once "Clases/Conexion.php";
+
+   $con = new Conectar();
+   $conexion =$con->conexion();
+   $sql ="SELECT * FROM usuario WHERE email='admin@gmail.com'";
+
+   $validar =0;
+   $resultado= mysqli_query($conexion, $sql);
+     if(mysqli_num_rows($resultado)>0){
+       $validar = 1 ;
+   }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,7 +45,10 @@
                             <input type="password" name="password" id="password" class="form-control input-sm" placeholder="INGRESE SU CONTRASEÑA">
                             <p></p>
                             <span class="btn btn-primary btn-sm" id="Ingresar">ENTRAR</span>
-                            <a href="registro.php" class="btn btn-danger btn-sm">REGISTRAR</a>
+                            <?php if(!$validar):?>
+                                <a href="registro.php" class="btn btn-danger btn-sm">REGISTRAR</a>
+                            <?php endif;?>    
+                            
                         </form>
                     </div>
                 </div>
