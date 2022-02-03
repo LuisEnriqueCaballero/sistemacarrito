@@ -27,6 +27,28 @@
             </div>
         </div>
     </div>
+<!-- Modal -->
+<div class="modal fade" id="actualizacategotia" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Actualiza Categorias</h4>
+      </div>
+      <div class="modal-body">
+        <form id="frmCategoria">
+          <input type="text" hidden="" name="idCategoria" id="idCategoria">
+          <label>Categoria</label>
+          <input type="text" name="categoriaU" id="categoriaU" class="form-control input-sm">
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" id="guardarDatosActualizado" data-dismiss="modal">Guardar datos</button>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
 <script type="text/javascript"> 
@@ -45,6 +67,10 @@ $(document).ready(function(){
             url:"../Procesos/Categorias/agregacategotias.php",
             success:function(r){
                 if(r == 1){
+                    // nos permite limpiar el formulario para insertar un registro
+                    $("#frmcategoria")[0].reset();
+
+                    $("#tablaCategoriaLoad").load("categorias/tablascategorias.php");
                     alertify.success("categoria agregado con exitos");
                 }else{
                     alertify.error("No se pudo agregar categoria");
@@ -53,6 +79,33 @@ $(document).ready(function(){
         });
     });
 });  
+</script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#guardarDatosActualizado").click(function(){
+
+            datos=$("#frmCategoria").serialize();
+            $.ajax({
+                type:"POST",
+                data:datos,
+                url:"../Procesos/Categorias/actualizarCategoria.php",
+                success:function(r){
+                    if(r == 1){
+                        $("#tablaCategoriaLoad").load("categorias/tablascategorias.php");
+                        alertify.success("Actualizacion exitosa");
+                    }else{
+                        alertify.error("No se Actualizo datos :*(");
+                    }
+                }
+            })
+        })
+    })
+</script>
+<script type="text/javascript"> 
+    function agregaDato(idCategoria,categoria){
+        $("#idCategoria").val(idCategoria);
+        $("#categoriaU").val(categoria);
+    }
 </script>
 <?php
 }else{
