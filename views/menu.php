@@ -2,10 +2,8 @@
 <html lang="en">
   <head>
     <title>ALMACEN Y VENTA</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php 
-    require_once "dependencia.php"
+    require_once "dependencia.php";
     ?>
     <link href="../Css/menu.css" rel="stylesheet">
   </head>
@@ -46,7 +44,7 @@
               <a href="cliente.php"><span class="glyphicon glyphicon-user"></span>Clientes</a>
             </li>
             <li>
-              <a href="venta.php"><span class="glyphicon glyphicon-user"></span>Vender Articulos</a>
+              <a href="venta.php"><span class="glyphicon glyphicon-usd"></span>Vender Articulos</a>
             </li>
             <li class="dropdown">
               <a href="#" style="color:red" class="dropdown-toggle" data-toggle="dropdown" role="button"
@@ -70,8 +68,6 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     
     <!-- /container --> 
-    
-</script>
   </body>
 </html>
 <script type="text/javascript">
@@ -84,4 +80,6 @@
     else {
     $('.logo').height(100);}
     });
+
+ </script>   
 

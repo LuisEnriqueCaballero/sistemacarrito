@@ -59,6 +59,7 @@
 </body>
 </html>
 <script type="text/javascript">
+$(document).ready(function(){
     $("#Ingresar").click(function(){
         vacio=validarFormularioVacio('frmlogin')
         if(vacio >0){
@@ -78,5 +79,6 @@
                 }
             }
         });
-    });   
+    }); 
+})   
 </script>
