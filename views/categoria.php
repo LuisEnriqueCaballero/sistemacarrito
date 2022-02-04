@@ -106,7 +106,29 @@ $(document).ready(function(){
         $("#idCategoria").val(idCategoria);
         $("#categoriaU").val(categoria);
     }
+
+    function eliminarDatos(idcategoria){
+        alertify.confirm('¿DESEA ELIMINAR ESTA CATEGORIA', function(){
+            $.ajax({
+                type:'POST',
+                data:"idcategoria="+ idcategoria,
+                url:"../Procesos/Categorias/eliminarCategoria.php",
+                success:function(r){
+                    if(r==1){
+                        $("#tablaCategoriaLoad").load("categorias/tablascategorias.php");
+                        alertify.success("Eliminacioon exitosa");
+                    }else{
+                        alertify.error("No se elimino datos :*(");
+                    }
+                }
+            });
+            alertify.success('ok')
+        },function(){
+            alertify.error('Cancel')
+        });
+    }
 </script>
+
 <?php
 }else{
     header('location:../index.php');

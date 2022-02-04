@@ -22,5 +22,13 @@ class categorias{
 
         echo mysqli_query($conexion,$sql);
     }
+
+    public function eliminarCategoria($idcategoria){
+        $con =new Conectar();
+        $conexion = $con->conexion();
+        $sql= "DELETE FROM categoria WHERE id_categoria='$idcategoria'";
+
+        return mysqli_query($conexion, $sql);
+    }
 }
 ?>

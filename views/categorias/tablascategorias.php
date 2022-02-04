@@ -27,7 +27,7 @@ $resultado = mysqli_query($conexion,$sql);
         </td>
         <td>
             <span class="btn btn-danger btn-sm">
-                <span class="glyphicon glyphicon-trash"></span>
+                <span class="glyphicon glyphicon-trash" onclick="eliminarDatos('<?php echo $ver[0];?>')"></span>
             </span>
         </td>
     </tr>

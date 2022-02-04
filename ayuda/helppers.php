@@ -62,5 +62,5 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     
     <!-- /container -->        
-
+<!-- alertify.confirm('Confirm Message', function(){alertify.success('ok')}, function(){alertify.error('Cancel')}); -->
     
