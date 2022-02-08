@@ -63,4 +63,27 @@
     
     <!-- /container -->        
 <!-- alertify.confirm('Confirm Message', function(){alertify.success('ok')}, function(){alertify.error('Cancel')}); -->
-    
+<script type="text/javascript">
+  $('#').click(function(){
+    var formData = new FormData(document.getElementById("frm"));
+
+    $.ajax({
+      url:"../proceso/articulos/insertaArchivo.php",
+      type:"POST",
+      dataType:'html',
+      cache:false,
+      contentType:false,
+      processData:false,
+
+      success:function(data){
+        if(data == 1){
+          $('#frm')[0].reset();
+          $('#tablaArticulos').load('articulos/tablaArticulos.php');
+          alertify.success("Agregado con exito :D");
+        }else{
+          alertify.error("Fallo al subir el archivo :C");
+        }
+      }
+    })
+  })
+</script>

@@ -2,7 +2,6 @@
      session_start();
      if(isset($_SESSION['usuario'])){
 
-   
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,8 +10,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Inicio</title>
-    <?php
-    require_once "menu.php";
+    <?php require_once "menu.php";?>
+    <?php require_once "../Clases/Conexion.php";
+    $con = new Conectar();
+    $conexion =$con->conexion();
+    $sql= "SELECT id_categoria, nombreCategoria FROM categoria";
+    $resultado =mysqli_query($conexion, $sql);
     ?>
 </head>
 <body>
@@ -22,8 +25,11 @@
             <div class="col-sm-4">
                 <form id="frmArticulos" enctype="multipart/form-data">
                     <label></label>
-                    <select name="categoria" id="categoria" class="form-control input-sm">
+                    <select name="categoriaselect" id="categoriaselect" class="form-control input-sm">
                         <option value="A">Seleccionar Categoria</option>
+                    <?php while($ver=mysqli_fetch_row($resultado)):?>
+                        <option value="<?php echo $ver[0]?>"><?php echo $ver[1] ;?></option> 
+                    <?php endwhile; ?>
                     </select>
                     <label>Nombre</label>
                     <input type="text" name="nombre" id="nombre" class="form-control input-sm">
@@ -51,23 +57,32 @@
     $(document).ready(function(){
         $("#tablaArticulosLoad").load("articulos/tablasarticulos.php");
         $("#btnagregarArticulo").click(function(){
-            vacios=validarFormularioVacio("frmArticulos");
-            if(vacios>0){
-                alertify.alert("debes llenar todo el formulario");
-                return false;
-            }
-            datos=$("#frmArticulos").serialize();
+            // vacios=validarFormularioVacio("frmArticulos");
+            // if(vacios>0){
+            //     alertify.alert("debes llenar todo el formulario");
+            //     return false;
+            // }
+            var formData = new FormData(document.getElementById("frmArticulos"));
+
             $.ajax({
-                type:"POST",
-                data:datos,
-                url:"../Procesor/Articulos/agregararticulo.php",
-                success:function(r){
-                    if(r==1){
-                        alertify.alert("Se agrego exitosamente");
-                    }else{
-                        alertify.error("No se agregor :C");
-                    }
+              url:"../Procesos/Articulos/insertaArticulo.php",
+              type:"POST",
+              dataType:"html",
+              cache:false,
+              contentType:false,
+              processData:false,
+
+              success:function(r){
+                alert(r);
+
+                if(r== 1){
+                  $('#frm')[0].reset();
+                  $('#tablaArticulosLoad').load('articulos/tablasarticulos.php');
+                  alertify.success("Agregado con exito :D");
+                }else{
+                  alertify.error("Fallo al subir el archivo :C");
                 }
+              }
             })
         })
     })
