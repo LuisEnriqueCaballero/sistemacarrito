@@ -37,9 +37,13 @@
               <li><a href="articulo.php">Articulos</a></li>
             </ul>
             </li>
+
+            <?php if($_SESSION['usuario']=='admin@gmail.com'):
+            ?>
             <li>
               <a href="usuario.php"><span class="glyphicon glyphicon-user"></span> Administrador de usuario</a>
             </li>
+            <?php endif;?>
             <li>
               <a href="cliente.php"><span class="glyphicon glyphicon-user"></span>Clientes</a>
             </li>
@@ -49,7 +53,7 @@
             <li class="dropdown">
               <a href="#" style="color:red" class="dropdown-toggle" data-toggle="dropdown" role="button"
                aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span>
-               Usuario: <span class="caret"></span>
+               Usuario:<?php echo $_SESSION['usuario']; ?> <span class="caret"></span>
               </a>
               <ul class="dropdown-menu">
                 <li>

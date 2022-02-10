@@ -8,7 +8,7 @@ $Usuarios =new Usuarios();
    $datos=array(
        $_POST['nombre'],
        $_POST['apellido'],
-       $_POST['correo'],
+       $_POST['usuario'],
        $pass
    );
 
