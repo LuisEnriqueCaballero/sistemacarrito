@@ -87,3 +87,19 @@
     })
   })
 </script>
+
+<?php
+public function creaFolio(){
+  $con=new Conectar();
+  $conexion =$con->conexion();
+  $sql="SELECT id_venta FROM ventas GROUP BY id_venta desc";
+  $resultado=mysqli_query($conexion,$sql);
+  $id=mysqli_fetch_row($resultado)[0];
+
+  if($id=="" or $id==null or $id==0){
+    return 1;
+  }else{
+    return $id +1;
+  }
+}
+?>

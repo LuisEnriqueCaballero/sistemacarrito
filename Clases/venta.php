@@ -24,5 +24,37 @@ class Venta{
         );
         return $datos;
     }
+    public function crearVenta(){
+        $con=new Conectar();
+        $conexion =$con->conexion();
+        $fecha =date('Y-m-d');
+        $idventa=self::creaFolio();
+        $usuario=$_SESSION['iduser'];
+        $datos=$_SESSION['tablaComprasTemp'];
+
+        $r=0;
+        
+        for ($i=0; $i < count($datos); $i++) { 
+            $d=explode('||',$datos[$i]);
+            $sql="INSERT INTO ventas (id_venta,id_cliente,id_producto,id_usuario,precio,fechaCompra	)
+            VALUES('$idventa','$d[5]','$d[0]','$usuario','$d[3]','$fecha')";
+
+            $r= $r + $resulta=mysqli_query($conexion,$sql);
+        }
+        return $r;
+    }
+    public function creaFolio(){
+        $con=new Conectar();
+        $conexion =$con->conexion();
+        $sql="SELECT id_venta FROM ventas GROUP BY id_venta desc";
+        $resultado=mysqli_query($conexion,$sql);
+        $id=mysqli_fetch_row($resultado)[0];
+      
+        if($id=="" or $id==null or $id==0){
+          return 1;
+        }else{
+          return $id +1;
+        }
+      }
 }
 ?>

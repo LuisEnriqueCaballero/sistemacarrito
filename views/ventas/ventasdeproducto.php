@@ -96,6 +96,35 @@ $conexion =$con->conexion();
         });
     });
 </script>
+<script type="text/javascript">
+    function quitarP(index){
+        $.ajax({
+            type:'POST',
+            data:"ind="+index,
+            url:"../Procesos/ventas/quitarProducto.php",
+            success:function(r){
+                $('#tablaVentaTempLoad').load('ventas/tablaVentaTem.php');
+                alertify.success("se quito el producto");
+            }
+        })
+    }
+    function CrearVenta(){
+        $.ajax({
+            url:'../Procesos/ventas/CrearVentas.php',
+            success:function(r){
+                if(r >0){
+                    $('#tablaVentaTempLoad').load('ventas/tablaVentaTem.php');
+                    $('#frmventasproductos')[0].reset();
+                    alertify.alert("Venta creada con exitos");
+                }else if(r==0){
+                    alertify.alert("No hay lista de venta");
+                }else{
+                    alertify.error("no se puedo crear la venta");
+                }
+            }
+        })
+    }
+</script>
 <script type="text/javascript"> 
     $(document).ready(function(){
         $("#clienteventa").select2();
