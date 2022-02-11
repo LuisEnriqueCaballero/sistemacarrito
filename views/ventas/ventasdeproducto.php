@@ -93,7 +93,7 @@ $conexion =$con->conexion();
                     $('#tablaVentaTempLoad').load('ventas/tablaVentaTem.php'); 
                 }
             })
-        })
+        });
     });
 </script>
 <script type="text/javascript"> 
