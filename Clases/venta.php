@@ -56,5 +56,30 @@ class Venta{
           return $id +1;
         }
       }
+
+      public function nombreCliente($idcliente){
+        $con =new Conectar();
+        $conexion =$con->conexion();
+      
+        $sql="SELECT apellido, nombre FROM clientes WHERE id_cliente='$idcliente'";
+        $resultado =mysqli_query($conexion,$sql);
+      
+        $ver=mysqli_fetch_row($resultado);
+      
+        return $ver[0]." ".$ver[1];
+      }
+      
+      public function ObtenerTotal($idventa){
+        $con =new Conectar();
+        $conexion =$con->conexion();
+        $sql="SELECT precio FROM ventas WHERE id_venta='$idventa'";
+      
+        $resultado=mysqli_query($conexion,$sql);
+        $total=0;
+        while($ver=mysqli_fetch_row($resultado)){
+          $total=$total +$ver[0];
+        }
+        return $total;
+      }
 }
 ?>
